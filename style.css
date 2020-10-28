@@ -7,6 +7,9 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: white;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 60px 300px 1fr auto;
 }
 
 .container {
@@ -15,7 +18,6 @@ body {
 }
 
 header {
-  height: 60px;
   -webkit-box-shadow:
     0 2px 2px 0 rgba(0,0,0,.14),
     0 3px 1px -2px rgba(0,0,0,.2),
@@ -29,6 +31,7 @@ header {
 header > * {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 100%;
 }
 
@@ -40,8 +43,16 @@ header > * {
   height: 100%;
 }
 
+.social-media img {
+  width: 50px;
+}
+
+.social-media a:hover {
+  opacity: 0.7;
+}
+
 .hero > * {
-  height: 300px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,6 +126,17 @@ header > * {
   padding: 14px;
   font-size: 13px;
   font-weight: 300;
+}
+
+footer {
+  font-size: 12px;
+  color: #888;
+  height: 40px;
+  margin-top: 120px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
