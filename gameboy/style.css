@@ -295,17 +295,17 @@ header:after {right: 30px;}
 
 @-webkit-keyframes shadowgb {
   0%   { width: 100% }
-  100% { width: 90%  }
+  100% { width: 95%  }
 }
 @-moz-keyframes shadowgb {
   0%   { width: 100% }
-  100% { width: 90%  }
+  100% { width: 95%  }
 }
 @-o-keyframes shadowgb {
   0%   { width: 100% }
-  100% { width: 90%  }
+  100% { width: 95%  }
 }
 @keyframes shadowgb {
   0%   { width: 100% }
-  100% { width: 90%  }
+  100% { width: 95%  }
 }
