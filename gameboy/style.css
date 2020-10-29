@@ -68,6 +68,10 @@ body > p {
   box-shadow: inset 10px 0 rgba(255,255,255,0.7), inset -10px 0 rgba(0,0,0,0.2) ;
   position: relative;
 /*  display: flex; */
+  -webkit-animation: floatgb 1s infinite alternate linear; /* Safari 4+ */
+  -moz-animation: floatgb 1s infinite alternate linear; /* Fx 5+ */
+  -o-animation: floatgb 1s infinite alternate linear; /* Opera 12+ */
+  animation: floatgb 1s infinite alternate linear; /* IE 10+, Fx 29+ */
 }
 
 header {
@@ -265,4 +269,21 @@ header:after {right: 30px;}
   position: relative;
   left: -25px;
   top: -10px;
+}
+
+@-webkit-keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+@-moz-keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+@-o-keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+@keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
 }
