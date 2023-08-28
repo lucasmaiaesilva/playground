@@ -1,39 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Daniel Snow's gameboy replica</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <main class="gameboy">
-    <div class="gameboy-wrapper">
-      <div class="gameboy-body">
-        <header></header>
-        <section class="screen">
-          <span></span>
-          <div class="glass">
-          </div>
-        </section>
-        <section class="actions">
-          <div class="directions">
-            <button class="arrow-left"></button>
-            <button class="arrow-top"></button>
-            <button class="arrow-right"></button>
-            <button class="arrow-bottom"></button>
-          </div>
-          <div class="buttons">
-            <button class="button-a"></button>
-            <button class="button-b"></button>
-          </div>
-          <ul class="start-reset">
-            <li><button class="start"></button></li>
-            <li><button class="reset"></button></li>
-          </ul>
-        </section>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daniel Snow's gameboy replica</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="gameboy">
+      <div class="gameboy-wrapper">
+        <div class="gameboy-body">
+          <header></header>
+          <section class="screen">
+            <span></span>
+            <div class="glass">
+            </div>
+          </section>
+          <section class="actions">
+            <div class="directions">
+              <button class="arrow-left"></button>
+              <button class="arrow-top"></button>
+              <button class="arrow-right"></button>
+              <button class="arrow-bottom"></button>
+            </div>
+            <div class="buttons">
+              <button class="button-a"></button>
+              <button class="button-b"></button>
+            </div>
+            <ul class="start-reset">
+              <li><button class="start"></button></li>
+              <li><button class="reset"></button></li>
+            </ul>
+          </section>
+        </div>
       </div>
-    </div>
-  </main>
-  <p>Daniel Snow's gameboy</p>
-</body>
+      <span class="footer-credits">Daniel Snow's Gameboy</span>
+    </main>
+    <aside>
+      <pre>
+        <code class="language-xml">
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Daniel Snow&apos;s gameboy replica&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main class=&quot;gameboy&quot;&gt;
+      &lt;div class=&quot;gameboy-wrapper&quot;&gt;
+        &lt;div class=&quot;gameboy-body&quot;&gt;
+          &lt;header&gt;&lt;/header&gt;
+          &lt;section class=&quot;screen&quot;&gt;
+            &lt;span&gt;&lt;/span&gt;
+            &lt;div class=&quot;glass&quot;&gt;
+            &lt;/div&gt;
+          &lt;/section&gt;
+          &lt;section class=&quot;actions&quot;&gt;
+            &lt;div class=&quot;directions&quot;&gt;
+              &lt;button class=&quot;arrow-left&quot;&gt;&lt;/button&gt;
+              &lt;button class=&quot;arrow-top&quot;&gt;&lt;/button&gt;
+              &lt;button class=&quot;arrow-right&quot;&gt;&lt;/button&gt;
+              &lt;button class=&quot;arrow-bottom&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;buttons&quot;&gt;
+              &lt;button class=&quot;button-a&quot;&gt;&lt;/button&gt;
+              &lt;button class=&quot;button-b&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;ul class=&quot;start-reset&quot;&gt;
+              &lt;li&gt;&lt;button class=&quot;start&quot;&gt;&lt;/button&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;button class=&quot;reset&quot;&gt;&lt;/button&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/section&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code>
+      </pre>
+      <pre>
+        <code class="language-css">
+/* RESET */
+* { box-sizing: border-box; margin: 0; padding: 0}
+
+button {
+  outline:0 !important;
+  cursor: pointer;
+}
+
+button:focus {
+  box-shadow: inset 0 0 !important;
+}
+/* COLORS */
+:root {
+  --pink: #FAD1D9;
+  --blue: #C5F6FF;
+  --stroke: #522438; 
+  --green: #C2E688;
+  --red: #FC6963;
+  --light-brown: #846662;
+  --gray: #9EA1AF;
+}
+
+body {
+   background-color: var(--pink);
+   position: relative;
+}
+
+body > p {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.gameboy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.gameboy-wrapper {
+  position: relative;
+}
+
+.gameboy-wrapper:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .2);
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  -webkit-animation: shadowgb 1s infinite alternate linear; /* Safari 4+ */
+  -moz-animation: shadowgb 1s infinite alternate linear; /* Fx 5+ */
+  -o-animation: shadowgb 1s infinite alternate linear; /* Opera 12+ */
+  animation: shadowgb 1s infinite alternate linear; /* IE 10+, Fx 29+ */
+}
+
+.gameboy-body {
+  background-color: var(--blue);
+  width: 320px;
+  height: 590px;
+  border-radius: 20px 20px 50px;
+  border: 6px solid var(--stroke);
+  box-shadow: inset 10px 0 rgba(255,255,255,0.7), inset -10px 0 rgba(0,0,0,0.2) ;
+  position: relative;
+/*  display: flex; */
+  -webkit-animation: floatgb 1s infinite alternate linear; /* Safari 4+ */
+  -moz-animation: floatgb 1s infinite alternate linear; /* Fx 5+ */
+  -o-animation: floatgb 1s infinite alternate linear; /* Opera 12+ */
+  animation: floatgb 1s infinite alternate linear; /* IE 10+, Fx 29+ */
+}
+
+header {
+  width: 100%;
+  height: 36px;
+  border-bottom: 6px solid var(--stroke); 
+  position: relative;
+  box-shadow: 0 6px rgba(0,0,0,0.2) ;
+}
+
+header:after,
+header:before {
+ content: "";
+ height: 100%;
+ width: 6px;
+ background-color: var(--stroke);
+ position: absolute;
+}
+
+header:before {left: 30px;}
+header:after {right: 30px;}
+
+.screen {
+  width: 246px;
+  /*  height: 280px; */
+  background-color: var(--light-brown);
+  margin: 30px 0 0 30px;
+  border: 6px solid var(--stroke);
+  padding: 30px;
+  border-radius: 10px 10px 30px;
+  position: relative;
+}
+
+.screen .glass {
+  width: 100%;
+  height: 160px;
+  background-color: var(--green);
+  border: 6px solid var(--stroke);
+  box-shadow: inset 6px 6px rgba(0,0,0,0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.glass:after,
+.glass:before {
+  content: "";
+  height: 200%;
+  width: 30px;
+  background-color: rgba(255,255,255,0.4);
+  position: absolute;
+  transform: rotate(45deg);
+  top: -80px;
+}
+
+.glass:after {right: -20px; width: 50px !important;}
+
+.screen span {
+  width: 10px;
+  height: 10px;
+  background-color: var(--red);
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--stroke);
+  top:50%;
+  margin-top: -10px;
+}
+.screen:after, .screen:before {
+  content:"";
+  height: 3px;
+  position: absolute;
+  top: 12px;
+  background-color: var(--stroke); 
+}
+.screen:before {
+  width: 100px;
+  left: 10px;
+}
+.screen:after {
+  width: 30px;
+  right: 10px;
+}
+
+.actions {
+  padding: 30px 14px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.directions {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid var(--stroke);
+  background-color: var(--gray);
+  position: relative;
+  display: flex;
+}
+.directions button {
+  border: 6px solid var(--stroke);
+  background-color:var(--light-brown);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 9;
+}
+.arrow-left {
+  border-right: none !important;
+  box-shadow: inset 0 4px #fff, inset 0 -4px rgba(0,0,0,0.2);
+  top: 50%;
+  margin-top: -15px;
+  left: 13.5px;
+}
+.arrow-top {
+  border-bottom: none !important;
+  box-shadow: inset 0 4px #fff;
+  left: 50%;
+  margin-left: -15px;
+  top: 13.5px;
+}
+.arrow-right {
+  border-left: none !important;
+  box-shadow: inset 0 4px #fff, inset 0 -4px rgba(0,0,0,0.2);
+  top: 50%;
+  margin-top: -15px;
+  right: 13.5px;
+}
+.arrow-bottom {
+  border-top: none !important;
+  box-shadow: inset 0 -4px rgba(0,0,0,0.2);
+  left: 50%;
+  margin-left: -15px;
+  bottom: 13.5px;
+}
+
+.directions:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: var(--light-brown);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin: -15px;
+  z-index: 1;
+}
+ 
+.buttons {
+  border: 6px solid var(--stroke);
+  padding: 8px 3px;
+  background-color: var(--gray);
+  border-radius: 100px;
+  position: relative;
+  transform: rotate(-20deg);
+  top: 30px;
+}
+
+.buttons button {
+  background-color: var(--red);
+  border: 6px solid var(--stroke);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  box-shadow: inset 4px 0 rgba(255,255,255,0.7), inset -4px 0 rgba(0,0,0,0.2) ;
+  margin: 0 5px;
+}
+
+.start-reset {
+  position: absolute;
+  bottom: -65px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 20px);
+}
+
+.start-reset li {
+  margin-left: 35px;
+}
+
+.start-reset li button {
+  border: 6px solid var(--stroke);
+  background-color:var(--light-brown);
+  width: 20px;
+  height: 50px;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: inset 3px 0 #fff, 3px 0 rgba(0,0,0,0.2);
+  transform: rotate(60deg);
+  position: relative;
+  left: -25px;
+  top: -10px;
+}
+
+@-webkit-keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+@-moz-keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+@-o-keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+@keyframes floatgb {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(5px); }
+}
+
+@-webkit-keyframes shadowgb {
+  0%   { width: 100% }
+  100% { width: 95%  }
+}
+@-moz-keyframes shadowgb {
+  0%   { width: 100% }
+  100% { width: 95%  }
+}
+@-o-keyframes shadowgb {
+  0%   { width: 100% }
+  100% { width: 95%  }
+}
+@keyframes shadowgb {
+  0%   { width: 100% }
+  100% { width: 95%  }
+}
+        </code>
+      </pre>
+    </aside>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/felipec.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/html.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+  </body>
 </html>

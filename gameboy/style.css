@@ -21,11 +21,10 @@ button:focus {
 }
 
 body {
-   background-color: var(--pink);
-   position: relative;
+  background-color: var(--pink);
 }
 
-body > p {
+.footer-credits {
   position: absolute;
   bottom: 12px;
   width: 100%;
@@ -37,10 +36,12 @@ body > p {
 }
 
 .gameboy {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position: relative;
 }
 
 .gameboy-wrapper {
@@ -308,4 +309,21 @@ header:after {right: 30px;}
 @keyframes shadowgb {
   0%   { width: 100% }
   100% { width: 95%  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  aside {
+    height: 100vh;
+    font-size: 15.3px;
+    overflow-y: scroll;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e22;
+  }
 }
